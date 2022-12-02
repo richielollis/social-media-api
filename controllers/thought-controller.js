@@ -3,14 +3,14 @@ const { Thought, User } = require("../models");
 const thoughtController = {
   getAllThoughts(req, res) {
     Thought.find({})
-      .then((dbthoughtData) => res.json(dbthoughtData))
+      .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => {
         console.log(err);
         res.status(400).json(err);
       });
   },
 
-  getSingleThought({ params }, res) {
+  getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
